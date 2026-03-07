@@ -1,11 +1,11 @@
 ---
 name: agentmind-memory
 description: Persistent cross-session memory system for AI agents. Four-layer architecture (Working/Episodic/Semantic/Procedural) stored as local Markdown files — human-readable, human-editable, zero dependencies. Your agent remembers user preferences, project context, lessons learned, and daily events across conversations. Pairs with agentmind-metacognition for a complete "brain OS."
-version: 1.0.0
+version: 1.1.0
 license: MIT
 ---
 
-# 🧠 AgentMind Memory v1.0
+# 🧠 AgentMind Memory v1.1
 
 > **Your agent forgets everything when the conversation ends. This fixes that.**
 > **All memory stored as Markdown files. No database. No API. No vendor lock-in.**
@@ -164,8 +164,13 @@ If you prefer not to copy files, here are the starter templates to create manual
 ```markdown
 # Current Task
 
+## Intent Anchor (do NOT modify during task)
+[One sentence: what does the user REALLY want?]
+[Key constraint 1]
+[Key constraint 2]
+
 ## Goal
-Build a REST API for user authentication
+[One sentence: what does the user want?]
 
 ## Progress
 - [x] Designed database schema
@@ -179,6 +184,10 @@ Build a REST API for user authentication
 
 ## Blockers
 - Need to decide on refresh token strategy
+
+## Heartbeat Log
+- [HB-1] tool-call#5 | all clear | continue
+- [HB-2] turn#10 | drift detected, corrected | re-read WORKING.md
 ```
 
 ### 2. Episodic Memory — `memory/YYYY-MM-DD.md`
@@ -186,7 +195,42 @@ Build a REST API for user authentication
 **Purpose**: Daily event log. Answers "what happened recently?"
 
 **Write when**: End of each conversation. Append if multiple conversations per day.
-**Retention**: 30 days. User can manually clean up older logs.
+**Retention**: 30 days for raw logs. After 7 days, auto-compress into weekly summaries.
+
+#### 7-Day Auto-Compression
+
+At the start of each week (or when episodic logs exceed 7 days of raw entries), compress the past 7 days:
+
+```
+STEP 1: Read all episodic logs from the past 7 days
+STEP 2: Extract key events, outputs, and follow-ups
+STEP 3: Write a compressed weekly summary at the top of the oldest day's file
+STEP 4: Delete the individual daily entries (keep the summary)
+```
+
+**Weekly summary format:**
+
+```markdown
+# Week Summary: 2026-03-01 → 2026-03-07
+
+## Key Events
+- Added DuckDuckGo search to XiaoyueCrew (03-07)
+- Created persistent-memory skill (03-07)
+- Fixed authentication bug in API project (03-04)
+
+## Key Outputs
+- D:\xiaoyue_crew\app.py — web search integration
+- ~/.stepfun/skills/persistent-memory/SKILL.md
+
+## Patterns Noticed
+- User prefers free solutions over paid APIs
+- Most work happens on XiaoyueCrew project
+
+## Unresolved Follow-ups
+- Test search integration with live queries
+```
+
+**Daily log format:**
 
 ```markdown
 # 2026-03-07
@@ -211,7 +255,29 @@ Build a REST API for user authentication
 **Purpose**: Long-term facts and preferences. The agent's "knowledge about the user and their world."
 
 **Write when**: Discovering a new persistent fact or user preference.
-**Update rule**: New facts override old facts. Always keep timestamps.
+**Update rule**: New facts override old facts. Always keep timestamps. Retain last 3 versions of changed entries.
+
+#### Change History
+
+When updating an existing entry, don't just overwrite — keep a brief history:
+
+```markdown
+## User Preferences
+- Prefers free solutions over paid APIs [2026-03-07]
+  - _was: "Willing to pay for quality tools" [2026-03-01]_
+  - _was: "No strong preference on pricing" [2026-02-15]_
+
+## Environment
+- Python: 3.12 at /usr/bin/python3 [2026-03-15]
+  - _was: 3.11 [2026-03-07]_
+  - _was: 3.10 [2026-02-01]_
+```
+
+**Rules:**
+- Keep at most 3 historical versions (current + 2 previous)
+- Use `_was: "old value" [date]_` format, indented under the current entry
+- When the 4th change happens, drop the oldest history entry
+- This creates an audit trail without bloating the file
 
 ```markdown
 # Semantic Memory

@@ -1,11 +1,11 @@
 ---
 name: agentmind-metacognition
 description: A meta-cognitive thinking protocol for AI agents. Not a tool for specific tasks, but an operating system for HOW your agent thinks. Provides intent decoding, difficulty assessment, risk prediction, execution monitoring, delivery verification, and growth reflection. Prevents common AI failure modes like fake completion, mid-task amnesia, stale data, and vague filler. Works with any LLM-based agent (Claude, GPT, Gemini, etc).
-version: 1.0.0
+version: 1.1.0
 license: MIT
 ---
 
-# 🧠 AgentMind Metacognition Protocol v1.0
+# 🧠 AgentMind Metacognition Protocol v1.1
 
 > **Not thinking more — thinking deeper.**
 > **Uncertain ≠ no answer. Has limits ≠ refuses to help. Truth > comfort.**
@@ -45,8 +45,10 @@ For other agents: include the content as a system prompt or instruction file.
 │ Reverse     │ Fail-3-     │ Growth          │
 │ Validation  │ Switch      │ Assessment      │
 │             │             │                 │
-│ Intent      │ Progress    │ Lesson          │
-│ Decoding    │ Tracking    │ Extraction      │
+│ Intent      │ Heartbeat   │ Lesson          │
+│ Decoding    │ Self-Check  │ Extraction      │
+│             │ Protocol    │                 │
+│             │ (NEW v1.1)  │                 │
 └─────────────┴─────────────┴─────────────────┘
 ```
 
@@ -153,6 +155,101 @@ Trying the same failing approach over and over, hoping for a different result.
 
 ---
 
+## 3.5 Heartbeat Self-Check Protocol (NEW in v1.1)
+
+> **Core philosophy**: Don't trust "I'll remember." Use a mechanical counter to force self-checks.
+> **Like a heartbeat — it doesn't need the brain to remind it to beat.**
+
+### Trigger Conditions (Hard Rules)
+
+The heartbeat fires automatically on ANY of these conditions:
+
+```
+TRIGGER 1: Tool Call Counter
+    → Every 5 tool calls → mandatory heartbeat
+    → Counter resets after each heartbeat
+
+TRIGGER 2: Conversation Turn Counter
+    → Every 5 conversation turns → mandatory heartbeat
+    → Counter resets after each heartbeat
+
+TRIGGER 3: Skill/Context Switch
+    → Immediately after loading a new skill or switching task context
+    → No counter needed — fires once on switch
+
+TRIGGER 4: Anomaly Signal (Immediate)
+    → Discover you're unsure "what the user actually wants" → heartbeat NOW
+    → Discover your output contradicts a previous commitment → heartbeat NOW
+    → Feel "confused" or "lost" → heartbeat NOW
+```
+
+### Heartbeat Checklist (Run Through Every Time)
+
+```
+┌─────────────────────────────────────────────────┐
+│  💓 HEARTBEAT CHECK                              │
+│                                                  │
+│  □ 1. Original Goal: What did the user ask for?  │
+│       (one sentence)                             │
+│  □ 2. Current Position: What am I doing now?     │
+│       Which step?                                │
+│  □ 3. Drift Detection: Does my current action    │
+│       serve the original goal?                   │
+│  □ 4. Quality Standard: What does the user       │
+│       expect the result to look like?            │
+│  □ 5. Amnesia Detection: Is there anything I     │
+│       said I'd do but haven't done yet?          │
+│  □ 6. Protocol Status: Do I still remember the   │
+│       core metacognition rules?                  │
+│       - Three-layer thinking?                    │
+│       - Fail-3-switch?                           │
+│       - Web search as offensive weapon?          │
+│       - Reverse validation?                      │
+│                                                  │
+│  If #6 is fuzzy → re-read WORKING.md immediately │
+│  If #1-3 are fuzzy → re-read conversation start  │
+│  If all clear → continue, reset counter          │
+└─────────────────────────────────────────────────┘
+```
+
+### Emergency Response Levels
+
+```
+When a heartbeat check reveals problems:
+
+【MILD】Can recall the general direction, but details are fuzzy
+    → Read WORKING.md to restore task context
+    → Silent recovery — don't interrupt the user
+    → Log: [HB-N] mild | read WORKING.md | recovered
+
+【MODERATE】Unsure what I'm doing, or detected drift
+    → Read WORKING.md + re-read first 3 messages of conversation
+    → Briefly confirm direction: "Let me confirm — you need X, correct?"
+    → Log: [HB-N] moderate | confirmed direction with user
+
+【SEVERE】Completely lost, or can't remember core protocol rules
+    → Re-load the metacognition skill
+    → Read WORKING.md + MEMORY.md
+    → Be honest: "This has been a long conversation. Let me re-organize
+      our progress to make sure nothing is missed."
+    → Log: [HB-N] severe | reloaded metacognition | full recovery
+```
+
+### Heartbeat Log (Written to WORKING.md)
+
+After each heartbeat, append a one-line log to WORKING.md:
+
+```markdown
+## Heartbeat Log
+- [HB-1] tool-call#5 | all clear | continue
+- [HB-2] turn#10 | drift detected, corrected | re-read WORKING.md
+- [HB-3] skill-switch | severe fog | reloaded metacognition | recovered
+```
+
+This creates an audit trail. If the agent's behavior degrades, you can trace exactly when and why.
+
+---
+
 ## 4. Intent Decoding Protocol
 
 When receiving any task:
@@ -202,6 +299,7 @@ During task execution, continuously check:
 □ Has the same approach failed 3 times? (If yes → switch methods)
 □ Am I generating vague filler or specific substance?
 □ Would I bet money that this output is correct?
+□ Has the heartbeat counter triggered? (If yes → run heartbeat checklist)
 ```
 
 ### Progress Tracking
